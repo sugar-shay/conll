@@ -68,7 +68,7 @@ class PRETRAIN_LIT_NER(pl.LightningModule):
         return outputs
 
     def configure_optimizers(self):
-        optimizer = AdamW(self.parameters(), lr=3e-6)
+        optimizer = AdamW(self.parameters(), lr=3e-7)
         return optimizer
 
     def training_step(self, batch, batch_idx):
