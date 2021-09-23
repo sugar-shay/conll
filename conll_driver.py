@@ -25,9 +25,17 @@ def main():
     
     tokenizer = NER_tokenizer(max_length=64, tokenizer_name = encoder_name, unique_labels=unique_labels)
     
-    train_dataset = tokenizer.tokenize_and_encode_labels(train_text, train_labels, train_slots)
-    val_dataset = tokenizer.tokenize_and_encode_labels(val_text, val_labels, val_slots)
-    test_dataset = tokenizer.tokenize_and_encode_labels(test_text, test_labels, test_slots)
+    train_dataset = tokenizer.tokenize_and_encode_labels(train_data['text'].tolist(), 
+                                                         train_data['labels'].tolist(), 
+                                                         train_data['num_slots'].tolist())
+    
+    val_dataset = tokenizer.tokenize_and_encode_labels(val_data['text'].tolist(), 
+                                                         val_data['labels'].tolist(), 
+                                                         val_data['num_slots'].tolist())
+    
+    test_dataset = tokenizer.tokenize_and_encode_labels(val_data['text'].tolist(), 
+                                                         val_data['labels'].tolist(), 
+                                                         val_data['num_slots'].tolist())
     
     model = PRETRAIN_LIT_NER(num_classes = unique_labels.shape[0], 
                      hidden_dropout_prob=.1,
