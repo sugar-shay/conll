@@ -43,7 +43,7 @@ def main():
                      encoder_name = encoder_name,
                      save_fp='bert_conll.pt')
     
-    model = train_LitModel(model, train_dataset, val_dataset, max_epochs=10, batch_size=32, patience = 2, num_gpu=1)
+    model = train_LitModel(model, train_dataset, val_dataset, max_epochs=6, batch_size=32, patience = 2, num_gpu=1)
     
     complete_save_path = 'results/full_train'
     if not os.path.exists(complete_save_path):
