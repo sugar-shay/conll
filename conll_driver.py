@@ -57,13 +57,11 @@ def main():
         pickle.dump(model.token_inputs, f)
     
     #reloading the model for testing
-    model = PRETRAIN_LIT_NER(num_classes = len(tokenizer.id2tag), 
-                     id2tag = tokenizer.id2tag,
-                     tag2id = tokenizer.tag2id,
+    model = PRETRAIN_LIT_NER(num_classes = unique_labels.shape[0], 
                      hidden_dropout_prob=.1,
                      attention_probs_dropout_prob=.1,
                      encoder_name = encoder_name,
-                     save_fp='best_model.pt')
+                     save_fp='bert_conll.pt')
     
     model.load_state_dict(torch.load('bert_conll.pt'))
     
