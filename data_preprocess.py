@@ -52,4 +52,4 @@ def get_conll_data(train_size = 14041, val_size = 3250, test_size = 3453):
                                 'labels':test_labels,
                                 'num_slots':test_slots})
     
-    return train_data, val_data, test_data
+    return train_data, val_data, test_data, unique_labels

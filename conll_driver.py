@@ -14,7 +14,7 @@ import pickle
 
 def main():
 
-    train_data, val_data, test_data = get_conll_data()
+    train_data, val_data, test_data, unique_labels = get_conll_data()
     
     print()
     print('# of Training Examples: ', train_data.shape[0])
