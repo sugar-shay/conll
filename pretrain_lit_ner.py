@@ -321,11 +321,11 @@ def model_testing(model, test_dataset):
         
         labels = labels.detach().cpu().numpy()
         
-        active_preds = [[model.id2tag[p] for (p, l) in zip(pred, label) if l != -100] 
-              for pred, label in zip(preds, labels)]
+        active_preds = [[p for (p, l) in zip(pred, label) if l != -100] 
+                        for pred, label in zip(preds, labels)]
     
-        active_labels = [[model.id2tag[l] for (p, l) in zip(pred, label) if l != -100]
-                  for pred, label in zip(preds, labels)]
+        active_labels = [[l for (p, l) in zip(pred, label) if l != -100]
+                         for pred, label in zip(preds, labels)]
         
         total_preds.extend(active_preds)
         total_labels.extend(active_labels)
